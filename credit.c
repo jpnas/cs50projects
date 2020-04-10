@@ -39,16 +39,24 @@ int main(void)
             {
                 printf("AMEX\n");
             }
+            else
+            {
+                printf("INVALID\n");
+            }
         }
         else if (credit < pow(10,16) && credit >= pow(10,15))
         {
-            if (credit2 > 50 && credit2 < 56)
+            if (credit2 >= 51 && credit2 <= 55)
             {
                 printf("MASTERCARD\n");
             }
-            if (credit2 > 39 && credit2 < 50)
+            else if (credit2 > 39 && credit2 < 50)
             {
                 printf("VISA\n");
+            }
+            else
+            {
+                printf("INVALID\n");
             }
         }   
         else if (credit < pow(10,13) && credit >= pow(10,12))
@@ -57,11 +65,10 @@ int main(void)
             {
                 printf("VISA\n");
             }
-        }
-        else
+            else
             {
                 printf("INVALID\n");
             }
-
+        }
     }
 }
