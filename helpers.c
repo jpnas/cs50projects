@@ -79,9 +79,12 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     //For the first row
-    int avgRed = (image[0][0].rgbtRed + image[0][1].rgbtRed + image[1][0].rgbtRed + image[1][1].rgbtRed) / 4;
-    int avgGreen = (image[0][0].rgbtGreen + image[0][1].rgbtGreen + image[1][0].rgbtGreen + image[1][1].rgbtGreen) / 4;
-    int avgBlue = (image[0][0].rgbtBlue + image[0][1].rgbtBlue + image[1][0].rgbtBlue + image[1][1].rgbtBlue) / 4;
+    float avgRed = (image[0][0].rgbtRed + image[0][1].rgbtRed + image[1][0].rgbtRed + image[1][1].rgbtRed) / 4;
+    float avgGreen = (image[0][0].rgbtGreen + image[0][1].rgbtGreen + image[1][0].rgbtGreen + image[1][1].rgbtGreen) / 4;
+    float avgBlue = (image[0][0].rgbtBlue + image[0][1].rgbtBlue + image[1][0].rgbtBlue + image[1][1].rgbtBlue) / 4;
+    avgRed = round(avgRed);
+    avgGreen = round(avgGreen);
+    avgBlue = round(avgBlue);
     image[0][0].rgbtRed = avgRed;
     image[0][0].rgbtGreen = avgGreen;
     image[0][0].rgbtBlue = avgBlue;
@@ -91,6 +94,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         avgRed = (image[0][i - 1].rgbtRed + image[0][i].rgbtRed + image[0][i + 1].rgbtRed + image[1][i - 1].rgbtRed + image[1][i].rgbtRed + image[1][i + 1].rgbtRed) / 6;
         avgGreen = (image[0][i - 1].rgbtGreen + image[0][i].rgbtGreen + image[0][i + 1].rgbtGreen + image[1][i - 1].rgbtGreen + image[1][i].rgbtGreen + image[1][i + 1].rgbtGreen) / 6;
         avgBlue = (image[0][i - 1].rgbtBlue + image[0][i].rgbtBlue + image[0][i + 1].rgbtBlue + image[1][i - 1].rgbtBlue + image[1][i].rgbtBlue + image[1][i + 1].rgbtBlue) / 6;
+        avgRed = round(avgRed);
+        avgGreen = round(avgGreen);
+        avgBlue = round(avgBlue);
         image[0][i].rgbtRed = avgRed;
         image[0][i].rgbtGreen = avgGreen;
         image[0][i].rgbtBlue = avgBlue;
@@ -98,6 +104,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     avgRed = (image[0][width - 2].rgbtRed + image[0][width - 1].rgbtRed + image[1][width - 2].rgbtRed + image[1][width - 1].rgbtRed) / 4;
     avgGreen = (image[0][width - 2].rgbtGreen + image[0][width - 1].rgbtGreen + image[1][width - 2].rgbtGreen + image[1][width - 1].rgbtGreen) / 4;
     avgBlue = (image[0][width - 2].rgbtBlue + image[0][width - 1].rgbtBlue + image[1][width - 2].rgbtBlue + image[1][width - 1].rgbtBlue) / 4;
+    avgRed = round(avgRed);
+    avgGreen = round(avgGreen);
+    avgBlue = round(avgBlue);
     image[0][width - 1].rgbtRed = avgRed;
     image[0][width - 1].rgbtGreen = avgGreen;
     image[0][width - 1].rgbtBlue = avgBlue;
@@ -108,6 +117,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         avgRed = (image[i - 1][0].rgbtRed + image[i - 1][1].rgbtRed + image[i][0].rgbtRed + image[i][1].rgbtRed + image[i + 1][0].rgbtRed + image[i + 1][1].rgbtRed) / 6;
         avgGreen = (image[i - 1][0].rgbtGreen + image[i - 1][1].rgbtGreen + image[i][0].rgbtGreen + image[i][1].rgbtGreen + image[i + 1][0].rgbtGreen + image[i + 1][1].rgbtGreen) / 6;
         avgBlue = (image[i - 1][0].rgbtBlue + image[i - 1][1].rgbtBlue + image[i][0].rgbtBlue + image[i][1].rgbtBlue + image[i + 1][0].rgbtBlue + image[i + 1][1].rgbtBlue) / 6;
+        avgRed = round(avgRed);
+        avgGreen = round(avgGreen);
+        avgBlue = round(avgBlue);
         image[i][0].rgbtRed = avgRed;
         image[i][0].rgbtGreen = avgGreen;
         image[i][0].rgbtBlue = avgBlue;
@@ -117,6 +129,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             avgRed = (image[i - 1][j - 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed + image[i][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i + 1][j - 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 9;
             avgGreen = (image[i - 1][j - 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen + image[i][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i + 1][j - 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 9;
             avgBlue = (image[i - 1][j - 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue + image[i][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i + 1][j - 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 9;
+            avgRed = round(avgRed);
+            avgGreen = round(avgGreen);
+            avgBlue = round(avgBlue);
             image[i][j].rgbtRed = avgRed;
             image[i][j].rgbtGreen = avgGreen;
             image[i][j].rgbtBlue = avgBlue;
@@ -124,6 +139,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         avgRed = (image[i - 1][width - 2].rgbtRed + image[i - 1][width - 1].rgbtRed + image[i][width - 2].rgbtRed + image[i][width - 1].rgbtRed + image[i + 1][width - 2].rgbtRed + image[i + 1][width - 1].rgbtRed) / 6;
         avgGreen = (image[i - 1][width - 2].rgbtGreen + image[i - 1][width - 1].rgbtGreen + image[i][width - 2].rgbtGreen + image[i][width - 1].rgbtGreen + image[i + 1][width - 2].rgbtGreen + image[i + 1][width - 1].rgbtGreen) / 6;
         avgBlue = (image[i - 1][width - 2].rgbtBlue + image[i - 1][width - 1].rgbtBlue + image[i][width - 2].rgbtBlue + image[i][width - 1].rgbtBlue + image[i + 1][width - 2].rgbtBlue + image[i + 1][width - 1].rgbtBlue) / 6;
+        avgRed = round(avgRed);
+        avgGreen = round(avgGreen);
+        avgBlue = round(avgBlue);
         image[i][width - 1].rgbtRed = avgRed;
         image[i][width - 1].rgbtGreen = avgGreen;
         image[i][width - 1].rgbtBlue = avgBlue;
@@ -133,6 +151,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     avgRed = (image[height - 2][0].rgbtRed + image[height - 2][1].rgbtRed + image[height - 1][0].rgbtRed + image[height - 1][1].rgbtRed) / 4;
     avgGreen = (image[height - 2][0].rgbtGreen + image[height - 2][1].rgbtGreen + image[height - 1][0].rgbtGreen + image[height - 1][1].rgbtGreen) / 4;
     avgBlue = (image[height - 2][0].rgbtBlue + image[height - 2][1].rgbtBlue + image[height - 1][0].rgbtBlue + image[height - 1][1].rgbtBlue) / 4;
+    avgRed = round(avgRed);
+    avgGreen = round(avgGreen);
+    avgBlue = round(avgBlue);
     image[height - 1][0].rgbtRed = avgRed;
     image[height - 1][0].rgbtGreen = avgGreen;
     image[height - 1][0].rgbtBlue = avgBlue;
@@ -142,6 +163,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         avgRed = (image[height - 2][i - 1].rgbtRed + image[height - 2][i].rgbtRed + image[height - 2][i + 1].rgbtRed + image[height - 1][i - 1].rgbtRed + image[height - 1][i].rgbtRed + image[height - 1][i + 1].rgbtRed) / 6;
         avgGreen = (image[height - 2][i - 1].rgbtGreen + image[height - 2][i].rgbtGreen + image[height - 2][i + 1].rgbtGreen + image[height - 1][i - 1].rgbtGreen + image[height - 1][i].rgbtGreen + image[height - 1][i + 1].rgbtGreen) / 6;
         avgBlue = (image[height - 2][i - 1].rgbtBlue + image[height - 2][i].rgbtBlue + image[height - 2][i + 1].rgbtBlue + image[height - 1][i - 1].rgbtBlue + image[height - 1][i].rgbtBlue + image[height - 1][i + 1].rgbtBlue) / 6;
+        avgRed = round(avgRed);
+        avgGreen = round(avgGreen);
+        avgBlue = round(avgBlue);
         image[height - 1][i].rgbtRed = avgRed;
         image[height - 1][i].rgbtGreen = avgGreen;
         image[height - 1][i].rgbtBlue = avgBlue;
@@ -149,6 +173,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     avgRed = (image[height - 2][width - 2].rgbtRed + image[height - 2][width - 1].rgbtRed + image[height - 1][width - 2].rgbtRed + image[height - 1][width - 1].rgbtRed) / 4;
     avgGreen = (image[height - 2][width - 2].rgbtGreen + image[height - 2][width - 1].rgbtGreen + image[height - 1][width - 2].rgbtGreen + image[height - 1][width - 1].rgbtGreen) / 4;
     avgBlue = (image[height - 2][width - 2].rgbtBlue + image[height - 2][width - 1].rgbtBlue + image[height - 1][width - 2].rgbtBlue + image[height - 1][width - 1].rgbtBlue) / 4;
+    avgRed = round(avgRed);
+    avgGreen = round(avgGreen);
+    avgBlue = round(avgBlue);
     image[height - 1][width - 1].rgbtRed = avgRed;
     image[height - 1][width - 1].rgbtGreen = avgGreen;
     image[height - 1][width - 1].rgbtBlue = avgBlue;
