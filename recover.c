@@ -14,9 +14,14 @@ int main(int argc, char *argv[])
     
     FILE *f = fopen(argv[1], "r");
 
+    //Counter and variable for the JPEG file name
     int count = 0;
-    BYTE buffer[512];
     char filename[8];
+    
+    // Creating the buffer for the bytes
+    BYTE buffer[512];
+    
+    //Pointer to the JPEG file
     FILE *img;
     
     
