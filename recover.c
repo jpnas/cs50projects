@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+typedef uint8_t BYTE;
+
 int main(int argc, char *argv[])
 {
     if (argc != 2)
@@ -12,18 +14,14 @@ int main(int argc, char *argv[])
     
     FILE *f = fopen(argv[1], "r");
 
-    int end = 512;
     int count = 0;
-    typedef uint8_t BYTE;
     BYTE buffer[512];
     char filename[8];
     FILE *img;
     
     
-    while (end == 512)
+    while (fread(buffer, sizeof(buffer), 1, f) == 1)
     {
-        end = fread(buffer, sizeof(buffer), 512, f);
-        
         //Checking if the header is indicating a new JPEG
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
         {
@@ -36,7 +34,7 @@ int main(int argc, char *argv[])
                 count++;
             }
             //If it is not the first, close the current file and start the next
-            else
+            if (count > 0)
             {
                 fclose(img);
                 sprintf(filename, "%03i.jpg", count);
@@ -46,11 +44,14 @@ int main(int argc, char *argv[])
             }
         }
         //If the header doesn't indicate a new JPEG, keep writing the current file
-        else
+        else if (count > 0)
         {
             fwrite(buffer, sizeof(buffer), 1, img);
         }
 
 
     }
+    fclose(img);
+    fclose(f);
+    return 0;
 }
