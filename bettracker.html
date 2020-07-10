@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="styles.css" rel="stylesheet">
+        <link href="menu-btn.css" rel="stylesheet">
+        <title>Hoopsbet</title>
+        <style>
+
+        </style>
+        <script></script>
+    </head>
+    <body>
+        <header>
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo" class="logo">
+            </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <nav>
+                <ul>
+                    <li><a href="games.html">Jogos</a></li>
+                    <li><a href="picks.html">Escolhas</a></li>
+                    <li><a href="bettracker.html">BetManager</a></li>
+                </ul>
+            </nav>
+            <label for="nav-toggle" class="nav-toggle-label">
+                    <div class="menu-btn">
+                        <div class="menu-btn_burger"></div>
+                    </div>
+            </label>
+            <button type="button" class="btn btn-secondary" style="position: absolute; top: 1.4em; right: 1em">Criar Conta</button>
+            <button type="button" class="btn btn-dark" style="position: absolute; top: 1.4em; right: 8.5em">Entrar</button>
+        </header>
+        <div class="content">
+            <h1 style="position: relative; top: -750px">BetManager</h1>
+            <form style="position: absolute; top: 230px; left: 2.5em">
+                <label for="game">Jogo</label>
+                <div class="row" id="game">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Time Visitante">
+                </div>
+                <h5 style="margin-top: 7px">@</h5>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Time da Casa">
+                </div>
+              </div>
+              <div class="form-group col-md-4" style="position: relative; top: 30px; left: -15px">
+                  <label for="inputState">Tipo de aposta</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Escolha...</option>
+                    <option>Vencedor</option>
+                    <option>Spread</option>
+                    <option>Over/Under</option>
+                  </select>
+                </div>
+            </form>
+        </div>
+    <script src="main.js"></script>
+    </body>
+</html>
